@@ -1,0 +1,12 @@
+{
+  "name": "lecture7",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "prashnant",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
