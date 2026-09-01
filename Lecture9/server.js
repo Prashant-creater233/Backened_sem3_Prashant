@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require("express");  // express is a fast , lightweight framework of node js
 const app=express();
 const PORT = 3000;
 
