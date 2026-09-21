@@ -7,16 +7,16 @@ const PORT=3000;
 // when we allow request from different ports so we use cors
 
 
-app.use(morgan()); // Third Party Middleware
+// app.use(morgan()); // Third Party Middleware
 
-// const logMiddleware=(req, res, next) => {
-//     // console.log(req.name) 
-//     req.name="John Date"
-//     console.log(`${req.method} ${req.url}`);
-//     console.log('"Time:', new Date().toLocaleString())
-//     // res.send("Hello from middleware")
-//     next();
-// }
+const logMiddleware=(req, res, next) => {
+    // console.log(req.name) 
+    req.name="John Date"
+    console.log(`${req.method} ${req.url}`);
+    console.log('"Time:', new Date().toLocaleString())
+    // res.send("Hello from middleware")
+    next();
+}
 
 const apiCheckMiddleware = (req,res,next) => {
     if(req.query.API_KEY=="1234"){
@@ -27,8 +27,8 @@ const apiCheckMiddleware = (req,res,next) => {
     }
 }
 
-// app.use(logMiddleware);
-app.use(apiCheckMiddleware);
+app.use(logMiddleware);
+// app.use(apiCheckMiddleware);  // global middleware
 
 app.get("/", (req, res) => {
     console.log("Requestname:", req.name);
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
     res.send("Hello world")
 })
 
-app.get("/data", (req,res)=>{
+app.get("/data",apiCheckMiddleware, (req,res)=>{  // route level middleware
     res.json(
         {
             city: "New York",
@@ -51,3 +51,5 @@ app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`);
     
 })
+
+
