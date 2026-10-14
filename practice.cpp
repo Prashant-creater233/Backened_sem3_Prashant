@@ -44,3 +44,29 @@ int binarySearch(vector<int>& arr, int x) {
 
     return -1;
 }
+
+// linear search
+vector<int> searchRange(vector<int>& arr, int x) {
+    int first = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
+
+    if (first == arr.size() || arr[first] != x)
+        return {-1, -1};
+
+    int last = upper_bound(arr.begin(), arr.end(), x) - arr.begin() - 1;
+
+    return {first, last};
+}
+
+void reverseArray(vector<int>& arr) {
+    int i = 0, j = arr.size() - 1;
+
+    while (i < j) {
+        swap(arr[i], arr[j]);
+        i++;
+        j--;
+    }
+}
+
+int main() {
+    return 0;
+}
