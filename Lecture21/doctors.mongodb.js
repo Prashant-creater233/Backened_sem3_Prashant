@@ -79,6 +79,10 @@ use("HospitalDB");
 // );
 
 // DELETE Operation
-db.doctors.deleteOne({
-    name: "Dr. Amit"
+// db.doctors.deleteOne({
+//     name: "Dr. Amit"
+// });
+
+db.doctors.deleteMany({
+    salary: 500000
 });
