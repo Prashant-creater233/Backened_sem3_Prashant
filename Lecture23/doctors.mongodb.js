@@ -76,6 +76,15 @@ db.doctors.aggregate(
             $sort: {
             totalSalary:-1
             }
+        },
+        // {
+        //     $limit: 1
+        // },
+        {
+            $count: 'totalSalary'
         }
     ]
 )
+
+db.doctors.getIndexes()
+db.doctors.find({name:"Dr. Amit"})
